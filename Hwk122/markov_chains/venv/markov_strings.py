@@ -81,7 +81,21 @@ class Application(Frame):
 
         self.grid()
         self.create_widgets()
+    #end  def __init__(self, master):
 
+    def clearScreen(self):
+        # clear Check boxes
+        self.is_alice.set(False)
+        self.is_peter.set(False)
+        self.is_bible.set(False)
+        self.is_time.set(False)
+        self.is_cities.set(False)
+
+        # clear morkov chain settings
+        self.window.set(5)
+        self.predict.set(300)
+        self.temp.set(0.5)
+    #end def clearScreen(self):
 
     def create_widgets(self):
         """ Create widgets to get story information and to display story. """
@@ -207,6 +221,14 @@ class Application(Frame):
                                    font=btnFont
                                    ).grid(row=13, column=0, sticky=W, pady=10, padx=5)
 
+        # create a the clear screen button
+        self.clear_btn = Button(self,
+                                text="Clear",
+                                command=self.clearScreen,
+                                highlightbackground='#3E4149',
+                                font=btnFont
+                                ).grid(row=13, column=0, sticky=W, pady=10, padx=95)
+
         # set up mad lib story frame
         consoleframe = LabelFrame(self,
                                   text="Madlibs Story"
@@ -236,10 +258,6 @@ class Application(Frame):
                   int(self.is_time.get()),
                   int(self.is_cities.get()))
 
-        print("params: ", params)
-
-        print(params)
-
         # process the files
         self.processCombine(params)
 
@@ -265,9 +283,9 @@ class Application(Frame):
                 fileName = list(books.keys())[i]
                 fileList.append(fileName)
                 # print("fileNamee = ", fileName)
-                print("\nStatistics For:   " ,books[fileName])
+                #print("\nStatistics For:   " ,books[fileName])
                 #results(fileName)
-                self.compareResults(fileName)
+                #self.compareResults(fileName)
 
         # combine the files
         with open(COMBINED_FILES, "w") as outfile:
@@ -287,32 +305,7 @@ class Application(Frame):
         # Process the input in a separate Python file
         processInput(COMBINED_FILES, window_size, predict, temp)
 
-    def compareResults(self,fileName):
-        unique_words = {}  # dictionary for word counts
-        words = process_file(fileName, "utf-8")
-        words_to_dict(words, unique_words)
-
-        print("Found {0} total words.".format(len(words)))
-        print("Found {0} unique words.".format(len(unique_words.keys())))
-        # print("Here are a few: ")
-        # print(list(unique_words.keys())[:5])    #print first few unique words
-        # result = unique_words.get('python', 0)
-        # print("Python appears {0} times in the text.".format(result))
-
-        # srch_str = 'down'
-        # if srch_str in unique_words.keys():
-        #     print("down appears {0} times in the text.".format(unique_words[srch_str]))
-        # else:
-        #     print(srch_str, "not in text.")
-
-        print("Raw TTR: ", len(unique_words.keys()) / len(words))
-        print("Pct TTR: ", str(round((len(unique_words.keys()) / len(words)) * 100)) + "%")
-        self.cmpshow.set("Statistics For: " + books[fileName] + ": Pct TTR: " + str(round((len(unique_words.keys()) / len(words)) * 100)) + "%")
-
-        # join the words in the list with new line char
-        # write_results("perline.txt", "\n".join(words), "utf-8")
-
-
+        self.clearScreen()
 
 # main
 def main():
