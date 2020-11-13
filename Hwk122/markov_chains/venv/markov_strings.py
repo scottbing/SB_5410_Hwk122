@@ -9,10 +9,13 @@ from tkinter.filedialog import askopenfilename
 from PIL import Image, ImageDraw, ImageTk
 from markov_words import *
 import tkinter.font as font
+import time
 import string
 import glob
 import re
 import os
+
+COMBINED_FILES = "combined_files.txt"
 
 #global books dictionary
 books = {
@@ -267,11 +270,22 @@ class Application(Frame):
                 self.compareResults(fileName)
 
         # combine the files
-        with open("output_file.txt", "w") as outfile:
+        with open(COMBINED_FILES, "w") as outfile:
             for filename in fileList:
                 with open(filename) as infile:
                     contents = infile.read()
                     outfile.write(contents)
+
+        # allow time to wirte the file
+        time.sleep(5.5)
+
+        #get the Markov Chain process settings
+        window_size = self.window.get()
+        predict = self.predict.get()
+        temp = self.temp.get()
+
+        # Process the input in a separate Python file
+        processInput(COMBINED_FILES, window_size, predict, temp)
 
     def compareResults(self,fileName):
         unique_words = {}  # dictionary for word counts

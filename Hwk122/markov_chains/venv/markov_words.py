@@ -72,13 +72,10 @@ def makestring(rule, length, temp):
 # end def makestring(rule, length):
 
 
-def processInput():
-    # get user input
-    window_size = input("Enter Window Size: ")
-    length = input("Enter Name Length: ")
-    temp = input("Enter Temperature Value: ")
+def processInput(fName, window_size, length, temp):
 
-    data = readdata("alice_oz.txt")
+
+    data = readdata(fName)
     rule = makerule(data, int(window_size))
     stats = countrules(rule)
     string = makestring(stats, int(length), float(temp))

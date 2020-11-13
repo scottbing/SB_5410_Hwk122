@@ -64,33 +64,64 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1302" height="244" key="GridCell.Tab.0.bottom" timestamp="1605243805139">
+    <state width="1302" height="303" key="GridCell.Tab.0.bottom" timestamp="1605245722760">
       <screen x="0" y="23" width="1920" height="1002" />
     </state>
     <state width="1548" height="244" key="GridCell.Tab.0.bottom/0.23.1920.1001@0.23.1920.1001" timestamp="1605237919738" />
-    <state width="1302" height="244" key="GridCell.Tab.0.bottom/0.23.1920.1002@0.23.1920.1002" timestamp="1605243805139" />
-    <state width="1302" height="244" key="GridCell.Tab.0.bottom/0.23.1920.1003@0.23.1920.1003" timestamp="1605241865509" />
+    <state width="1302" height="303" key="GridCell.Tab.0.bottom/0.23.1920.1002@0.23.1920.1002" timestamp="1605245722760" />
+    <state width="1302" height="303" key="GridCell.Tab.0.bottom/0.23.1920.1003@0.23.1920.1003" timestamp="1605245353106" />
     <state width="1548" height="244" key="GridCell.Tab.0.bottom/0.23.1920.997@0.23.1920.997" timestamp="1605236719111" />
-    <state width="1302" height="244" key="GridCell.Tab.0.center" timestamp="1605243805138">
+    <state width="1302" height="303" key="GridCell.Tab.0.center" timestamp="1605245722759">
       <screen x="0" y="23" width="1920" height="1002" />
     </state>
     <state width="1548" height="244" key="GridCell.Tab.0.center/0.23.1920.1001@0.23.1920.1001" timestamp="1605237919737" />
-    <state width="1302" height="244" key="GridCell.Tab.0.center/0.23.1920.1002@0.23.1920.1002" timestamp="1605243805138" />
-    <state width="1302" height="244" key="GridCell.Tab.0.center/0.23.1920.1003@0.23.1920.1003" timestamp="1605241865509" />
+    <state width="1302" height="303" key="GridCell.Tab.0.center/0.23.1920.1002@0.23.1920.1002" timestamp="1605245722759" />
+    <state width="1302" height="303" key="GridCell.Tab.0.center/0.23.1920.1003@0.23.1920.1003" timestamp="1605245353106" />
     <state width="1548" height="244" key="GridCell.Tab.0.center/0.23.1920.997@0.23.1920.997" timestamp="1605236719111" />
-    <state width="1302" height="244" key="GridCell.Tab.0.left" timestamp="1605243805138">
+    <state width="1302" height="303" key="GridCell.Tab.0.left" timestamp="1605245722759">
       <screen x="0" y="23" width="1920" height="1002" />
     </state>
     <state width="1548" height="244" key="GridCell.Tab.0.left/0.23.1920.1001@0.23.1920.1001" timestamp="1605237919737" />
-    <state width="1302" height="244" key="GridCell.Tab.0.left/0.23.1920.1002@0.23.1920.1002" timestamp="1605243805138" />
-    <state width="1302" height="244" key="GridCell.Tab.0.left/0.23.1920.1003@0.23.1920.1003" timestamp="1605241865508" />
+    <state width="1302" height="303" key="GridCell.Tab.0.left/0.23.1920.1002@0.23.1920.1002" timestamp="1605245722759" />
+    <state width="1302" height="303" key="GridCell.Tab.0.left/0.23.1920.1003@0.23.1920.1003" timestamp="1605245353105" />
     <state width="1548" height="244" key="GridCell.Tab.0.left/0.23.1920.997@0.23.1920.997" timestamp="1605236719110" />
-    <state width="1302" height="244" key="GridCell.Tab.0.right" timestamp="1605243805139">
+    <state width="1302" height="303" key="GridCell.Tab.0.right" timestamp="1605245722760">
       <screen x="0" y="23" width="1920" height="1002" />
     </state>
     <state width="1548" height="244" key="GridCell.Tab.0.right/0.23.1920.1001@0.23.1920.1001" timestamp="1605237919738" />
-    <state width="1302" height="244" key="GridCell.Tab.0.right/0.23.1920.1002@0.23.1920.1002" timestamp="1605243805139" />
-    <state width="1302" height="244" key="GridCell.Tab.0.right/0.23.1920.1003@0.23.1920.1003" timestamp="1605241865509" />
+    <state width="1302" height="303" key="GridCell.Tab.0.right/0.23.1920.1002@0.23.1920.1002" timestamp="1605245722760" />
+    <state width="1302" height="303" key="GridCell.Tab.0.right/0.23.1920.1003@0.23.1920.1003" timestamp="1605245353106" />
     <state width="1548" height="244" key="GridCell.Tab.0.right/0.23.1920.997@0.23.1920.997" timestamp="1605236719111" />
+    <state width="1302" height="303" key="GridCell.Tab.1.bottom" timestamp="1605245722760">
+      <screen x="0" y="23" width="1920" height="1002" />
+    </state>
+    <state width="1302" height="303" key="GridCell.Tab.1.bottom/0.23.1920.1002@0.23.1920.1002" timestamp="1605245722760" />
+    <state width="1302" height="303" key="GridCell.Tab.1.bottom/0.23.1920.1003@0.23.1920.1003" timestamp="1605245634125" />
+    <state width="1302" height="303" key="GridCell.Tab.1.center" timestamp="1605245722760">
+      <screen x="0" y="23" width="1920" height="1002" />
+    </state>
+    <state width="1302" height="303" key="GridCell.Tab.1.center/0.23.1920.1002@0.23.1920.1002" timestamp="1605245722760" />
+    <state width="1302" height="303" key="GridCell.Tab.1.center/0.23.1920.1003@0.23.1920.1003" timestamp="1605245634124" />
+    <state width="1302" height="303" key="GridCell.Tab.1.left" timestamp="1605245722760">
+      <screen x="0" y="23" width="1920" height="1002" />
+    </state>
+    <state width="1302" height="303" key="GridCell.Tab.1.left/0.23.1920.1002@0.23.1920.1002" timestamp="1605245722760" />
+    <state width="1302" height="303" key="GridCell.Tab.1.left/0.23.1920.1003@0.23.1920.1003" timestamp="1605245634124" />
+    <state width="1302" height="303" key="GridCell.Tab.1.right" timestamp="1605245722760">
+      <screen x="0" y="23" width="1920" height="1002" />
+    </state>
+    <state width="1302" height="303" key="GridCell.Tab.1.right/0.23.1920.1002@0.23.1920.1002" timestamp="1605245722760" />
+    <state width="1302" height="303" key="GridCell.Tab.1.right/0.23.1920.1003@0.23.1920.1003" timestamp="1605245634125" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/venv/markov_words.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
