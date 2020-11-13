@@ -97,7 +97,7 @@ def makestring(rule, length, temp):
 if __name__ == '__main__':
     # get user input
     window_size = input("Enter Window Size: ") # number of letters for the key
-    length = input("Enter Name Length: ") # number of predictions
+    length = input("Enter Predict Length: ") # number of predictions
     temp = input("Enter Temperature Value: ")   # percentage of randomness
 
     # process user input

@@ -80,3 +80,5 @@ def processInput(fName, window_size, length, temp):
     stats = countrules(rule)
     string = makestring(stats, int(length), float(temp))
     print(string)
+
+    return string

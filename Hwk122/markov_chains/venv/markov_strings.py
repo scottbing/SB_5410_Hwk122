@@ -26,44 +26,6 @@ books = {
             'two_cities.txt'  	 : 'A Tale of Two Cities'
         }
 
-compareText = []
-
-searchText = []
-
-
-def process_file(fname, enc):
-    #open file for 'r'eading
-    with open(fname, 'r', encoding=enc) as file:
-        dat = file.read()   #read file
-        dat = perform_re(dat)
-    return(dat.split())  #return read data
-#end process_file(fname, enc):
-
-def write_results(fname, data, enc):
-    #open file for 'w'riting
-    with open(fname, 'w', encoding = enc) as file:
-        file.write(data)
-#end def write_results(fname, data, enc):
-
-def words_to_dict(all_words, dictionary):
-    for w in all_words: #for each word
-        w = clean_word((w))
-        if w in dictionary:  #if the word was counted before
-            dictionary[w] += 1  #increment te count
-        else:
-            dictionary[w] = 1   #begin count for a new word
-#end def word_to_dict(all_words, dictionary):
-
-def clean_word(word):
-    for p in string.punctuation:
-        word = word.replace(p, "")
-    return word.lower() #return the word as lowercase
-#end def clean_word(word):
-
-def perform_re(text):
-    text = re.sub(r'(CHAPTER) ([IVXLC]+.)', '\\1\\2', text)
-    return text
-
 
 class Application(Frame):
     """ GUI application that creates a story based on user input. """
@@ -95,6 +57,12 @@ class Application(Frame):
         self.window.set(5)
         self.predict.set(300)
         self.temp.set(0.5)
+
+        # clear results
+        self.result.delete('1.0', END)
+
+        # clear errors
+        self.err2show.set("")
     #end def clearScreen(self):
 
     def create_widgets(self):
@@ -230,25 +198,50 @@ class Application(Frame):
                                 ).grid(row=13, column=0, sticky=W, pady=10, padx=95)
 
         # set up mad lib story frame
-        consoleframe = LabelFrame(self,
+        self.consoleframe = LabelFrame(self,
                                   text="Madlibs Story"
                                   ).grid(row=14, column=0, sticky=NSEW, padx=5, pady=5)
 
 
-        vscrollbar = Scrollbar(consoleframe,
+        self.vscrollbar = Scrollbar(self.consoleframe,
                                orient=VERTICAL)
 
-        bottom = Text(consoleframe,
-                      height=10,
-                      width=50,
-                      wrap=WORD,
-                      state=NORMAL
-                      ).grid(row=15, column=0, sticky=NSEW, padx=5, pady=5)
+        self.result = Text(self.consoleframe, wrap=WORD, state=NORMAL)
+        self.result.grid(row=14, column=0, sticky=W, padx=5, pady=5)
 
+        self.bottom = Text(self.consoleframe,
+                           height=10,
+                           width=50,
+                           wrap=WORD,
+                           state=NORMAL
+                           ).grid(row=15, column=0, sticky=NSEW, padx=5, pady=5)
 
-        # this is a variable Label widget whose display is decided by the linked variable `self.msg2show`
-        Label(self, textvariable=self.msg2show).grid(row=18, column=0, sticky=NSEW, pady=4)
+        self.msg2show = StringVar()
+        Label(self,
+              textvariable=self.msg2show,
+              wraplength=200
+              ).grid(row=16, column=0, columnspan=2, sticky=W, pady=4)
 
+        self.errFont = font.Font(weight="bold")
+        self.errFont = font.Font(size=20)
+        self.err2show = StringVar()
+        Label(self,
+              textvariable=self.err2show,
+              foreground="red",
+              font=self.errFont,
+              wraplength=200
+              ).grid(row=17, column=0, sticky=NSEW, pady=4)
+
+        # Label(self,
+        #            textvariable=self.msg2show
+        #            ).grid(row=18, column=0, sticky=NSEW, pady=4)
+        #
+        # self.err2show = StringVar()
+        # Label(self,
+        #       textvariable=self.err2show,
+        #       foreground="red",
+        #       wraplength=200
+        #       ).grid(row=19, column=0, sticky=NSEW, pady=4)
 
     def combineFiles(self):
         # process file selections
@@ -261,8 +254,13 @@ class Application(Frame):
         # process the files
         self.processCombine(params)
 
+
+
     def processCombine(self, params):
         global books
+
+        err = False
+
         #storyFiles = ["alice.txt", "peter_rabbit.txt", "the_bible.txt", "time_machine.txt", "two_cities.txt"]
         #setup dictionar of books
         # books = {
@@ -273,39 +271,42 @@ class Application(Frame):
         #     'two_cities.txt'  	 : 'A Tale of Two Cities'
         # }
 
-        #set up list of selected files
-        fileList = []
+        if all(p == 0 for p in params):
+            err = True
+            self.err2show.set("No Files were Chosen")
 
-        for i in range(len(params)):
-            if params[i] == 1:
-                # fileName = storyFiles[i]
-                # print("list(books.keys())[i]", list(books.keys())[i])
-                fileName = list(books.keys())[i]
-                fileList.append(fileName)
-                # print("fileNamee = ", fileName)
-                #print("\nStatistics For:   " ,books[fileName])
-                #results(fileName)
-                #self.compareResults(fileName)
+        if err == False:
+            #set up list of selected files
+            fileList = []
 
-        # combine the files
-        with open(COMBINED_FILES, "w") as outfile:
-            for filename in fileList:
-                with open(filename) as infile:
-                    contents = infile.read()
-                    outfile.write(contents)
+            # build a list of selected files
+            for i in range(len(params)):
+                if params[i] == 1:
+                    fileName = list(books.keys())[i]
+                    fileList.append(fileName)
 
-        # allow time to wirte the file
-        time.sleep(5.5)
+            # combine the files
+            with open(COMBINED_FILES, "w") as outfile:
+                for filename in fileList:
+                    with open(filename) as infile:
+                        contents = infile.read()
+                        outfile.write(contents)
 
-        #get the Markov Chain process settings
-        window_size = self.window.get()
-        predict = self.predict.get()
-        temp = self.temp.get()
+            # allow time to write the file
+            time.sleep(5.5)
 
-        # Process the input in a separate Python file
-        processInput(COMBINED_FILES, window_size, predict, temp)
+            #get the Markov Chain process settings
+            window_size = self.window.get()
+            predict = self.predict.get()
+            temp = self.temp.get()
 
-        self.clearScreen()
+            # Process the input in a separate Python file
+            results = processInput(COMBINED_FILES, window_size, predict, temp)
+
+            self.clearScreen()
+
+            self.result.insert(INSERT, results)
+
 
 # main
 def main():
@@ -313,12 +314,11 @@ def main():
     root.title("BSSD 5410 Homework 9.2 Markov Chain using Strings")
     root.resizable(height=None, width=None)
     root.iconbitmap('William_Shakespeare.ico')
-    root.geometry("750x625")
+    root.geometry("750x825")
     app = Application(root)
 
 
     root.mainloop()
-
 
 if __name__ == "__main__":
     main()
